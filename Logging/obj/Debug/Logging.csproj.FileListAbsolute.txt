@@ -1,4 +1,0 @@
-c:\users\jason\documents\visual studio 2015\Projects\DiceRoller\Logging\bin\Debug\Logging.dll
-c:\users\jason\documents\visual studio 2015\Projects\DiceRoller\Logging\bin\Debug\Logging.pdb
-c:\users\jason\documents\visual studio 2015\Projects\DiceRoller\Logging\obj\Debug\Logging.dll
-c:\users\jason\documents\visual studio 2015\Projects\DiceRoller\Logging\obj\Debug\Logging.pdb
