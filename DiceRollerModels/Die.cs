@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace DiceRollerModels
 {
-   
 
-    //container class for list of dice
+    /// <summary>
+    /// container class for list of dice, defaults to 2 dice
+    /// </summary>
     public class Die : List<Dice>
     {
         /// <summary>
@@ -16,41 +17,26 @@ namespace DiceRollerModels
         /// </summary>
         private readonly int maxValue = 6;
 
-        //not a great name, its the value of all the dice rolls
+        //the value of all the dice rolls, i.e. dice 1 rolls '3' and dice 2 rolls '4'
+        //the total roll value is '7'
         public int totalRollValue { get; set; }
 
-        //default contstructor will create two dice
+        //default contstructor will create two dice with 6 sides
         public Die ()
         {
             this.Add(new Dice(maxValue, 1));
             this.Add(new Dice(maxValue, 2));
         }
 
-
+        /// <summary>
+        /// Constructor to choose number of sides
+        /// </summary>
+        /// <param name="maxValue">number of sides, or maximum value</param>
         public Die(int maxValue)
         {
             this.Add(new Dice(maxValue, 1));
             this.Add(new Dice(maxValue, 2));
         }
-        ///// <summary>
-        ///// use this constructor if you want to choose more than 2 dice, with a limit of 10 arbitrary
-        ///// </summary>
-        ///// <param name="numberOfDice"></param>
-        //public Die(int numberOfDice)
-        //{
-
-        //    if (numberOfDice < 11)
-        //    {
-        //        for (int i = 0; i < numberOfDice; i++)
-        //        {
-        //            this.Add(new Dice());
-        //        }
-        //    }
-        //    else
-        //        throw new Exception("More than 10 dice were selected");
-
-        //}
-
 
     }
 
