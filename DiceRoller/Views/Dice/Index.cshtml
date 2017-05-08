@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div id="content" ng-controller="DiceController">
+    <span ng-show="isViewLoading" class="viewLoading">
+        <img src="~/Content/images/ng-loader.gif" /> loading...
+    </span>
+    <div ng-class="result">{{message}}</div>
+    <hr />
+    
+
+    <h2>Roll the Dice!</h2>
+    <hr />
+    <form novalidate name="myForm">
+        <div>
+            <button class="btn btn-primary" ng-click="rollDice()" ng-disabled="myForm.$invalid" data-toggle="tooltip" data-placement="top" title="Click on me to roll the dice">
+                Roll Dice
+            </button>
+        </div>
+        <div>
+            <label>Choose how many sides dice has (6, 8, 10, 12 or 20) </label>
+            <input name="maxVal" type="text" ng-model="maxValue" required size="2" maxlength="2" />
+            <span style="color:red; font-size: x-large">{{errorMessage}}</span>
+        </div>
+        <h2>Dice Results</h2>
+    </form>
+    <table class="table table-striped">
+        <tr>
+            <th></th>
+            <th>Dice Id</th>
+            <th>Dice Roll Result</th>
+            <th>How many sides does the dice have?</th>
+        </tr>
+        <tr ng-repeat="diceModel in ListDice">
+            <td><img src="~/images/Dice.jpg" alt="image of 6 sided dice" width="50" height="50"/></td>
+            <td>{{diceModel.Id}}</td>
+            <td><b>{{diceModel.CurrentRollValue}}</ b></td>
+            <td>{{diceModel.MaxValue}}</td>
+        
+        </tr>
+    </table>
+    <br />
+    <div>
+        <h2> Dice Total Roll Result: <span>{{getTotal()}}</span></h2>
+        
+    </div>
+    <br />
+  
+</div>
+
+<div>
+    Challenge: <br />
+    a simple application that will roll two dice based on user action and then display the result.  The application should allow the user to roll as many times as they want.
+</div>
+
+@section JavaScript{
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/ScriptsNg/DiceController.js"></script>
+}
