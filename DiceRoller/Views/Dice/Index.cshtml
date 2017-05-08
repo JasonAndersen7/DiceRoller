@@ -3,61 +3,56 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Dice Results</h2>
-
 <div id="content" ng-controller="DiceController">
     <span ng-show="isViewLoading" class="viewLoading">
         <img src="~/Content/images/ng-loader.gif" /> loading...
     </span>
     <div ng-class="result">{{message}}</div>
     <hr />
-    @*<form name="frmDice" novalidate>
-        <div>
-            <input type="hidden" ng-model="diceModel.Id" name="cid" />
-        </div>
-        <div>
-            <label for="email">Customer Name</label>
-            <input type="text" ng-model="diceModel.CustName" name="cname" placeholder="" required ng-minlength="4" ng-maxlength="14" />
-            <span class="error" ng-show="(frmDice.$dirty||submitted) && frmDice.cname.$error.required">Customer name is Required</span>
-            <span class="error" ng-show="frmDice.$dirty && frmDice.cname.$error.minlength">Minimum length required is 5</span>
-            <span class="error" ng-show="frmDice.$dirty && frmDice.cname.$error.maxlength">Minimum length required is 15</span>
-        </div>
-        <div>
-            <label for="email">E-mail address</label>
-            <input type="email" ng-model="diceModel.CustEmail" name="email" placeholder="" required />
-            <span class="error" ng-show="(frmDice.$dirty ||submitted) && frmDice.email.$error.required">EmailId is Required!</span>
-            <span class="error" ng-show="(frmDice.$dirty ||submitted) && frmDice.$error.email">Invalid EmailId!</span>
-        </div>
-        <div class="btn">
-            <input type="submit" value="Save" ng-click="saveCustomer()" ng-disabled="frmDice.$invalid">
-            <input type="submit" value="Update" ng-click="updateCustomer()" ng-disabled="frmDice.$invalid">
-        </div>
-    </form>*@
-    <hr />
+    
 
-    <h2>All Dice</h2>
+    <h2>Roll the Dice!</h2>
+    <hr />
+    <form novalidate name="myForm">
+        <div>
+            <button class="btn btn-primary" ng-click="rollDice()" ng-disabled="myForm.$invalid" data-toggle="tooltip" data-placement="top" title="Click on me to roll the dice">
+                Roll Dice
+            </button>
+        </div>
+        <div>
+            <label>Choose how many sides dice has (6, 8, 10, 12 or 20) </label>
+            <input name="maxVal" type="text" ng-model="maxValue" required size="2" maxlength="2" />
+            <span style="color:red; font-size: x-large">{{errorMessage}}</span>
+        </div>
+        <h2>Dice Results</h2>
+    </form>
     <table class="table table-striped">
+        <tr>
+            <th></th>
+            <th>Dice Id</th>
+            <th>Dice Roll Result</th>
+            <th>How many sides does the dice have?</th>
+        </tr>
         <tr ng-repeat="diceModel in ListDice">
+            <td><img src="~/images/Dice.jpg" alt="image of 6 sided dice" width="50" height="50"/></td>
             <td>{{diceModel.Id}}</td>
-            <td>{{diceModel.CurrentRollValue}}</td>
+            <td><b>{{diceModel.CurrentRollValue}}</ b></td>
             <td>{{diceModel.MaxValue}}</td>
-            <td>
-                @*<a href="#" ng-click="getCustomer(diceModel)" title="Edit Record">
-                    <img src="~/Content/images/edit.png" />
-                </a><a href="#" ng-click="deleteCustomer(diceModel)" title="Delete Record">
-                    <img src="~/Content/images/erase.png" />
-                </a>*@
-            </td>
+        
         </tr>
     </table>
     <br />
-    <span>{{getTotal()}}</span>
+    <div>
+        <h2> Dice Total Roll Result: <span>{{getTotal()}}</span></h2>
+        
+    </div>
     <br />
-    <form novalidate name="myForm">
-        <button class="btn btn-primary" ng-click="rollDice()" ng-disabled="myForm.$invalid">Roll Dice</button>
-        <input name="maxVal" type="text" ng-model="maxValue" required />
-        <span>{{errorMessage}}</span>
-    </form>
+  
+</div>
+
+<div>
+    Challenge: <br />
+    a simple application that will roll two dice based on user action and then display the result.  The application should allow the user to roll as many times as they want.
 </div>
 
 @section JavaScript{

@@ -44,7 +44,9 @@
 
             if (value < 6 || value > 20) {
                 $scope.errorMessage = 'Invalid range. 6-20';
+                return;
             }
+            $scope.errorMessage = null;
         }
 
         debugger;
